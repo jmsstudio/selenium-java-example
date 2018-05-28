@@ -1,4 +1,4 @@
-package br.com.jmsstudio.automation.pageObjects;
+package br.com.jmsstudio.automation.pageObjects.user;
 
 import lombok.AllArgsConstructor;
 import org.openqa.selenium.By;

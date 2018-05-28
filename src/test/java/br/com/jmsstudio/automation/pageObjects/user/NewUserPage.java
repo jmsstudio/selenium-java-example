@@ -1,4 +1,4 @@
-package br.com.jmsstudio.automation.pageObjects;
+package br.com.jmsstudio.automation.pageObjects.user;
 
 import lombok.AllArgsConstructor;
 import org.openqa.selenium.By;
@@ -11,6 +11,10 @@ import java.util.Arrays;
 public class NewUserPage {
 
     private WebDriver driver;
+
+    public void open() {
+        driver.get("http://localhost:8080/usuarios/new");
+    }
 
     public void create(final String username, final String email) {
         final WebElement nameField = driver.findElement(By.name("usuario.nome"));

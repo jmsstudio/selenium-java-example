@@ -1,8 +1,8 @@
 package br.com.jmsstudio.automation.bid;
 
 import br.com.jmsstudio.automation.config.EnvironmentManager;
-import br.com.jmsstudio.automation.pageObjects.NewUserPage;
-import br.com.jmsstudio.automation.pageObjects.UserListPage;
+import br.com.jmsstudio.automation.pageObjects.user.NewUserPage;
+import br.com.jmsstudio.automation.pageObjects.user.UserListPage;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
