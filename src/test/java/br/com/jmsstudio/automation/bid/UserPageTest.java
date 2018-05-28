@@ -64,7 +64,7 @@ public class UserPageTest {
     }
 
     @Test
-    public void shouldDeleteAnUser() {
+    public void shouldDeleteAnUser() throws InterruptedException {
         final String userName = "John Armless";
         final String userEmail = "john.armless@johnarmless.com";
 

@@ -25,12 +25,13 @@ public class UserListPage {
     }
 
     public void deleteLine(final int linePosition) {
-        driver.findElement(By.xpath("(//*[@id=\"content\"]/table//button)["+linePosition+"]")).click();
+        driver.findElement(By.xpath("(//*[@id=\"content\"]/table//button)[" + linePosition + "]")).click();
         driver.switchTo().alert().accept();
     }
 
-    public Integer getTotalTableRows() {
+    public Integer getTotalTableRows() throws InterruptedException {
         new WebDriverWait(driver, 3).until(ExpectedConditions.urlToBe("http://localhost:8080/usuarios"));
+        Thread.sleep(100);
         return driver.findElements(By.xpath("//table/tbody/tr")).size();
     }
 }
