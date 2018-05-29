@@ -49,4 +49,20 @@ public class BidPageTest {
         assertTrue(this.bidListPage.assertBidIsOnList(bidName, initialValue, userName, isUsed));
     }
 
+    @Test
+    public void shouldCreateANewEmptyBidAndShowErrorMessage() {
+        final String userName = "John Doe";
+        final NewUserPage newUserPage = new NewUserPage(EnvironmentManager.getDriver());
+        newUserPage.open();
+        newUserPage.create(userName, "johndoe@email.com");
+
+        this.bidListPage.open();
+        NewBidPage newBidPage = this.bidListPage.goToNew();
+
+        newBidPage.create("", null, userName, false);
+
+        assertTrue(newBidPage.isNomeObrigatorioMessagePresent());
+        assertTrue(newBidPage.isInvalidValueMessagePresent());
+    }
+
 }

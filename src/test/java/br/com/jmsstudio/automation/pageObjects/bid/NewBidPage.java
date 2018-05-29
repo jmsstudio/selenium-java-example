@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.Arrays;
+
 @AllArgsConstructor
 public class NewBidPage {
 
@@ -20,7 +22,10 @@ public class NewBidPage {
         final WebElement saveButton = driver.findElement(By.xpath("//form//button"));
 
         nameField.sendKeys(name);
-        initialValueField.sendKeys(initialValue.toString());
+
+        if (initialValue != null) {
+            initialValueField.sendKeys(initialValue.toString());
+        }
         select.selectByVisibleText(username);
 
         if (used) {
@@ -30,5 +35,20 @@ public class NewBidPage {
 
         saveButton.click();
     }
+
+    private Boolean isMessagePresent(final String message) {
+        return Arrays.stream(driver.findElement(By.xpath("//*[@id=\"content\"]")).getText().split("\n"))
+                .map(message::equals)
+                .filter(Boolean::booleanValue).findFirst().orElse(false);
+    }
+
+    public boolean isNomeObrigatorioMessagePresent() {
+        return isMessagePresent("Nome obrigatorio!");
+    }
+
+    public boolean isInvalidValueMessagePresent() {
+        return isMessagePresent("Valor inicial deve ser maior que zero!");
+    }
+
 
 }
