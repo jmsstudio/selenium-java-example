@@ -34,4 +34,10 @@ public class UserListPage {
         Thread.sleep(100);
         return driver.findElements(By.xpath("//table/tbody/tr")).size();
     }
+
+    public EditUserPage goToEdit() {
+        driver.findElement(By.linkText("editar")).click();
+        return new EditUserPage(this.driver);
+    }
+
 }

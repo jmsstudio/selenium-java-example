@@ -1,6 +1,7 @@
 package br.com.jmsstudio.automation.pageObjects.user;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,8 +9,9 @@ import org.openqa.selenium.WebElement;
 import java.util.Arrays;
 
 @AllArgsConstructor
-public class NewUserPage {
+public class NewUserPage extends UserForm {
 
+    @Getter
     private WebDriver driver;
 
     public void open() {
@@ -24,20 +26,6 @@ public class NewUserPage {
         nameField.sendKeys(username);
         emailField.sendKeys(email);
         saveButton.click();
-    }
-
-    private Boolean isMessagePresent(final String message) {
-        return Arrays.stream(driver.findElement(By.xpath("//*[@id=\"content\"]")).getText().split("\n"))
-                .map(message::equals)
-                .filter(Boolean::booleanValue).findFirst().orElse(false);
-    }
-
-    public boolean isNomeObrigatorioMessagePresent() {
-        return isMessagePresent("Nome obrigatorio!");
-    }
-
-    public boolean isEmailObrigatorioMessagePresent() {
-        return isMessagePresent("E-mail obrigatorio!");
     }
 
 }

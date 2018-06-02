@@ -7,8 +7,10 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.WebDriver;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class UserPageTest {
@@ -22,7 +24,10 @@ public class UserPageTest {
 
     @BeforeEach
     public void init() {
-        this.userListPage = new UserListPage(EnvironmentManager.getDriver());
+        final WebDriver driver = EnvironmentManager.getDriver();
+
+        this.userListPage = new UserListPage(driver);
+        driver.get("http://localhost:8080/apenas-teste/limpa");
     }
 
     @AfterAll
@@ -78,6 +83,25 @@ public class UserPageTest {
         this.userListPage.deleteLine(1);
 
         assertEquals(totalTableRows -1, this.userListPage.getTotalTableRows() -1 );
+    }
+
+    @Test
+    public void shouldUpdateAnUser() {
+        final String userName = "John Armless";
+        final String userEmail = "john.armless@johnarmless.com";
+
+        this.userListPage.open();
+        this.userListPage.goToNew().create(userName, userEmail);
+
+        assertTrue(this.userListPage.assertUserIsOnList(userName, userEmail));
+
+        final String newUserName = "Mary Poppins";
+        final String newUserEmail = "mary@popins.com";
+
+        this.userListPage.goToEdit().changeName(newUserName).changeEmail(newUserEmail).save();
+
+        assertTrue(this.userListPage.assertUserIsOnList(newUserName, newUserEmail));
+        assertFalse(this.userListPage.assertUserIsOnList(userName, userEmail));
     }
 
 

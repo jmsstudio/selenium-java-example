@@ -4,10 +4,12 @@ import br.com.jmsstudio.automation.config.EnvironmentManager;
 import br.com.jmsstudio.automation.pageObjects.bid.BidListPage;
 import br.com.jmsstudio.automation.pageObjects.bid.NewBidPage;
 import br.com.jmsstudio.automation.pageObjects.user.NewUserPage;
+import br.com.jmsstudio.automation.pageObjects.user.UserListPage;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.WebDriver;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -22,7 +24,10 @@ public class BidPageTest {
 
     @BeforeEach
     public void init() {
+        final WebDriver driver = EnvironmentManager.getDriver();
+
         this.bidListPage = new BidListPage(EnvironmentManager.getDriver());
+        driver.get("http://localhost:8080/apenas-teste/limpa");
     }
 
     @AfterAll
