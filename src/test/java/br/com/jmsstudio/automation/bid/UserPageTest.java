@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class UserPageTest {
+public class UserPageTest extends AbstractPageTest {
 
     private UserListPage userListPage;
 
@@ -27,11 +27,12 @@ public class UserPageTest {
         final WebDriver driver = EnvironmentManager.getDriver();
 
         this.userListPage = new UserListPage(driver);
-        driver.get("http://localhost:8080/apenas-teste/limpa");
+        clearData(driver);
     }
 
     @AfterAll
     public static void tearDown() {
+        clearData(EnvironmentManager.getDriver());
         EnvironmentManager.shutDown();
     }
 

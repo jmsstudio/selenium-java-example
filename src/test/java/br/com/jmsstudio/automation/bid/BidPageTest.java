@@ -13,7 +13,7 @@ import org.openqa.selenium.WebDriver;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class BidPageTest {
+public class BidPageTest extends AbstractPageTest {
 
     private BidListPage bidListPage;
 
@@ -27,11 +27,12 @@ public class BidPageTest {
         final WebDriver driver = EnvironmentManager.getDriver();
 
         this.bidListPage = new BidListPage(EnvironmentManager.getDriver());
-        driver.get("http://localhost:8080/apenas-teste/limpa");
+        clearData(driver);
     }
 
     @AfterAll
     public static void tearDown() {
+        clearData(EnvironmentManager.getDriver());
         EnvironmentManager.shutDown();
     }
 

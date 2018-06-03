@@ -22,6 +22,7 @@ public class EnvironmentManager {
 
     public static void shutDown() {
         driver.quit();
+        driver = null;
     }
 
 
