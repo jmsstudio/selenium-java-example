@@ -1,4 +1,4 @@
-package br.com.jmsstudio.automation.pageObjects.bid;
+package br.com.jmsstudio.automation.pageObjects.auction;
 
 import lombok.AllArgsConstructor;
 import org.openqa.selenium.By;
@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.Select;
 import java.util.Arrays;
 
 @AllArgsConstructor
-public class NewBidPage {
+public class NewAuctionPage {
 
     private WebDriver driver;
 

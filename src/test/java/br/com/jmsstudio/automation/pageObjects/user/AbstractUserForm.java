@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 
 import java.util.Arrays;
 
-public abstract class UserForm {
+public abstract class AbstractUserForm {
 
     protected abstract WebDriver getDriver();
 

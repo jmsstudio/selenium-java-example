@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 @AllArgsConstructor
-public class EditUserPage extends UserForm {
+public class EditUserPage extends AbstractUserForm {
 
     @Getter
     private WebDriver driver;
